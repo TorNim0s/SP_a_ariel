@@ -4,36 +4,40 @@
 int isPalindrome(int num)
 {
     int temp = num;
-    char word;
+    int word = 0;
     while (temp > 0)
     {
+        word *= 10;
         word += temp % 10;
-        temp = temp / 10;
+        temp /= 10;
     }
-    if (word == num)
+    if (word == num){
         return 1;
+    }
     else
         return 0;
 }
 
 int isArmstrong(int num)
 {
-    int temp = num, counter = 0;
-    while (temp > 0)
+    int save = num;
+    int counter = 0;
+    while (num != 0)
     {
         counter++;
-        temp = temp / 10;
+        num /= 10;
     }
-    temp = num;
+    num = save;
     int sum = 0;
-    while (temp > 0)
+    while (num != 0)
     {
-        int a = temp % 10;
-        sum += pow(a, counter);
-        temp = temp / 10;
+        int digit = num % 10;
+        sum += pow(digit, counter);
+        num /= 10;
     }
-    if (sum == num)
+    if (save == sum)
+    {
         return 1;
-    else
-        return 0;
+    }
+    return 0;
 }

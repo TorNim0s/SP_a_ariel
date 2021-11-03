@@ -1,11 +1,15 @@
 #include <stdio.h>
+#include <math.h>
 #include "NumClass.h"
+int factorial(int);
 
 int isPrime(int num)
 {
-    if (num <= 1)
+    if (num < 1)
         return 0;
-    for (int i = 2; i < sqrt(num); i++)
+    if (num == 1)
+        return 1;
+    for (int i = 2; i <= sqrt(num); i++)
     {
         if (num % i == 0)
             return 0;
@@ -17,22 +21,26 @@ int isStrong(int num)
 {
     if (num <= 0)
         return 0;
-    int temp = num, sum = 0;
-    while (temp > 0)
+    int save = num;
+    int sum = 0;
+    while (num > 0)
     {
-        int a = temp % 10;
-        sum += factorial(a);
-        temp = temp / 10;
+        sum = sum + factorial(num % 10);
+        num /= 10;
     }
-    if (sum == num)
+    if (sum == save)
+    {
         return 1;
-    else
-        return 0;
+    }
+    return 0;
 }
 
 int factorial(int num)
 {
-    if (num <= 0)
+    if (num < 0){
         return 0;
+    }
+    if (num == 0)
+        return 1;
     return factorial(num - 1) * num;
 }
