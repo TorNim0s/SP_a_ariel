@@ -1,5 +1,5 @@
 CC = gcc
-AR=ar
+AR=ars
 CFLAGS = -Wall
 LOOPOBJ = BasicClassification.o advancedClassificationLoop.o
 RECUSIVEOBJ = BasicClassification.o advancedClassificationRecursion.o
